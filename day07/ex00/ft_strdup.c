@@ -1,51 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtrichar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/22 13:49:08 by jtrichar          #+#    #+#             */
-/*   Updated: 2020/06/25 11:22:16 by jtrichar         ###   ########.fr       */
+/*   Created: 2020/06/26 13:51:24 by jtrichar          #+#    #+#             */
+/*   Updated: 2020/06/26 13:56:42 by jtrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
 
-void ft_putchar(char n)
+char *ft_strdup(char *src);
+
+int main(int argc, char **argv)
 {
-	write(1, &n, 1);
+	char *src = argv[1];
+	char *dest;
+
+	dest = ft_strdup(src);
+
+	printf("%s\n", dest);
+	return 0;
 }
 
-char *ft_strncpy(char *dest, char *src, unsigned int n)
+char *ft_strdup(char *src)
 {
-	unsigned int i;
-
+	int i;
+	char *dest;
+	
 	i = 0;
-	while (src != '\0' && (i < n))
+	while (src[i++] != '\0');
+	--i;
+
+	dest = (char *)malloc(i*sizeof(char));
+
+	while(i >= 0)
 	{
 		dest[i] = src[i];
-		i++;
+		i--;
 	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
-}
-
-int main()
-{
-	char dest[11];
-	int i;
-	char src[11] = "HelloWorld";
-	i = 11;
-	ft_strncpy(dest, src, i);
-	i = 0;
-	while (dest[i] != '\0')
-	{
-	 ft_putchar(dest[i]);
-	 i++;
-	}
-	return 0;
+	return dest;
 }

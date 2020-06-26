@@ -1,50 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtrichar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/23 09:54:41 by jtrichar          #+#    #+#             */
-/*   Updated: 2020/06/25 11:42:37 by jtrichar         ###   ########.fr       */
+/*   Created: 2020/06/26 13:59:53 by jtrichar          #+#    #+#             */
+/*   Updated: 2020/06/26 14:01:41 by jtrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
 
-char	*ft_strstr(char *str, char *to_find)
-{
-	int i;
-	int j;
+#include <stdlib.h>
+#include <stdio.h>
 
-	i = 0;
-	j = 0;
-	if (to_find[0] == '\0')
-		return (str);
-	while (str[i] != '\0')
-	{
-		j = 0;
-		while (str[i + j] != '\0' && str[i + j] == to_find[j])
-		{
-			if (to_find[j + 1] == '\0')
-				return (&str[i]);
-			++j;
-		}
-		++i;
-	}
-	return (0);
-}
+int *ft_range(int min, int max);
 
 int main()
 {
-	char *n;
+	int i;
+	int j;
+	int *r;
+	int index = 0;
 
-	char str[11] = "WeThinkCode";
-	char to_find[3] = "Th";
-
-	n = ft_strstr(str, to_find);
-	
-	write(1, n, 1);
+	i = 3;
+	j = 7;
+	r = ft_range(i, j);
+	while (index < 4)
+	{
+		printf("%d\n", r[index++]);
+	}
 	return 0;
+}
 
-	
+int *ft_range(int min, int max)
+{
+	int i;
+	int len;
+	int *range;
+				
+	if (max < min) return NULL;
+	len = max - min;
+	range = (int *)malloc(len*sizeof(int));
+
+	i = 0;
+	while (min < max) range[i++] = min++;
+
+	return range;
 }

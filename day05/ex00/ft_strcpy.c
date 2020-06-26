@@ -6,7 +6,7 @@
 /*   By: jtrichar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 13:37:16 by jtrichar          #+#    #+#             */
-/*   Updated: 2020/06/22 15:16:55 by jtrichar         ###   ########.fr       */
+/*   Updated: 2020/06/25 10:52:42 by jtrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ char *ft_strcpy(char *dest, char *src)
 
 int main()
 {
-	char dest[10];
+	char dest[11];
 	int i;
-	char src[10] = "HelloWorld";
+	char src[11] = "HelloWorld";
 	ft_strcpy(dest, src);
 	i = 0;
 	while (dest[i] != '\0')
